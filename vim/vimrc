@@ -1,0 +1,88 @@
+" Vim Configuration v1.0
+"
+" Create Date: 2018-04-09
+"
+" Modified Dates:
+"
+" ============================== Keyboard shortcuts ==========================
+" Key           Filetype        Action
+" F1
+" F2
+" F3
+" F4
+" F5
+" F6
+" F7	 			            Toggle paste mode
+" F8				            Toggle line numbers
+" F9
+" F10
+" F11
+" F12
+" space 			            Clear search highlighting
+" <S-tab>			            Cycle through buffers
+" <C-x><Up,Down,Left,Right>	    Move between splits
+" ============================================================================
+
+" Don't run in legacy mode
+set nocompatible
+
+" Basics
+syntax on			    " Enable syntax highlighting
+set autowrite 			" Save file before other commands like :next
+set number
+set background=dark
+filetype plugin on
+filetype plugin indent on
+
+" Indentation
+set tabstop=4
+set shiftwidth=4
+set softtabstop=4
+set expandtab
+set smartindent
+"" smart backspace with autoindent
+set backspace=indent,eol,start
+
+" General writing
+"" Enable mouse support
+set mouse=a
+"" Toggle paste mode
+map  <F7> :set paste!<CR>i
+map! <F7> <C-o>:set paste!<CR>i
+"" Toggle line numbers
+function! Toggle_sign_column()
+    if &signcolumn == "yes"
+        setlocal signcolumn="no"
+    else
+        setlocal signcolumn="yes"
+    endif
+endfunction
+map  <F8> :set number!
+    \ <bar> :call Toggle_sign_column()<CR>
+map! <F8> <C-o>:set number!
+    \ <bar> :call Toggle_sign_column()<CR>
+"" Highlight cursor line
+hi CursorLine cterm=None ctermbg=233
+set cursorline
+
+" Search
+"" map space to clear search highlighting and close scratch windows
+nnoremap <silent> <Space> :silent noh<Bar>:pc<Bar>echo<CR>
+set hlsearch 			" Highlight search term
+set incsearch			" Show search while typing
+set ignorecase			" Case insensitive search
+set smartcase			" Override ignorecase if search term has uppercase
+
+" Navigation
+"" Cycle through buffers
+map <S-tab> :bn<CR>
+map! <S-tab> <C-o>:bn<CR>
+"" Move between splits
+map  <C-x><Up>    <C-w>k
+map  <C-x><Down>  <C-w>j
+map  <C-x><Left>  <C-w>h
+map  <C-x><Right> <C-w>l
+map! <C-x><Up>    <C-o><C-w>k
+map! <C-x><Down>  <C-o><C-w>j
+map! <C-x><Left>  <C-o><C-w>h
+map! <C-x><Right> <C-o><C-w>l
