@@ -14,7 +14,7 @@ else
     exit 1
 fi
 
-REDHAT_RELEASE=$(cat /etc/redhat-release 2>1)
+REDHAT_RELEASE=$(cat /etc/redhat-release 2>&1)
 if [[ "$REDHAT_RELEASE" != "CentOS"* ]] && [[ "$REDHAT_RELEASE" != "Red Hat"* ]]; then
     echo "Unknown OS - Only CentOS/RHEL based systems are currently supported"
     exit 1
