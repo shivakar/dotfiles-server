@@ -1,0 +1,60 @@
+#.bashrc
+
+# Bash Configuration v1.0
+#
+# Create Date: 2018-04-09
+#
+# Modified Dates:
+#
+#
+
+# Don't load this file if this is not an interactive session
+[ -z "$PS1" ] && return
+
+#------------------------------------------------------------------------------
+# Shell options
+#------------------------------------------------------------------------------
+# Enable autocomplete
+set autolist
+# Enable programmable completion
+shopt -s progcomp
+# Disable terminal audio-visual bell
+set bell-style none
+# Store multi-line commands in a single history entry
+shopt -s cmdhist
+# Enable extended pattern matching operators
+shopt -s extglob
+# Append history to existing files instead of overwriting
+shopt -s histappend
+# Case-insensitive globbing
+shopt -s nocaseglob
+
+#------------------------------------------------------------------------------
+# Basics
+#------------------------------------------------------------------------------
+files="/etc/bashrc $HOME/bash/aliases $HOME/bash/exports"
+for file in ${files}; do
+    [ -r "$file" ] && [ -f "$file" ] && source "$file"
+done
+# Only load bash completions if it is an interactive session
+if [ ! -z "$PS1" ]; then
+    for f in $HOME/bin/bash/completions/*; do
+        source "$f"
+    done
+fi
+unset files
+unset file
+unset f
+
+#-------------------------------------------------------------------------------
+# Prompt
+#-------------------------------------------------------------------------------
+if [ "$(whoami)" == "root"  ]; then
+    # Root's prompt (bold red)
+    export PS1='\[\e[1;31m\][\u@\h \w]\$\[\e[0m\] '
+else
+    # Normal user's prompt (bold green)
+    export PS1='\[\e[1;32m\][\u@\h \w]\$\[\e[0m\] '
+fi
+# Terminal window title
+export PROMPT_COMMAND='echo -ne "\033]0;${PWD#$HOME\/}\007"'

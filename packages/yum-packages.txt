@@ -1,0 +1,14 @@
+bash
+bash-completion
+colordiff
+etckeeper
+git
+htop
+less
+moreutils
+pwgen
+strace
+tmux
+tree
+vim
+wget
