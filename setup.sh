@@ -27,5 +27,6 @@ source scripts/setup.linux.sh
 # Setup symlinks to dotfiles
 ln -sf ~/bin/bash/bashrc ~/.bashrc
 ln -sf ~/bin/bash/bash_profile ~/.bash_profile
+ln -sf ~/bin/bash/inputrc ~/.inputrc
 ln -sf ~/bin/tmux/tmux.conf ~/.tmux.conf
 ln -sf ~/bin/vim/vimrc ~/.vimrc
