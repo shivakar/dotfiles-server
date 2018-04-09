@@ -32,7 +32,7 @@ shopt -s nocaseglob
 #------------------------------------------------------------------------------
 # Basics
 #------------------------------------------------------------------------------
-files="/etc/bashrc $HOME/bash/aliases $HOME/bash/exports"
+files="/etc/bashrc $HOME/bin/bash/aliases $HOME/bin/bash/exports"
 for file in ${files}; do
     [ -r "$file" ] && [ -f "$file" ] && source "$file"
 done
