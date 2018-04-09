@@ -45,7 +45,7 @@ set backspace=indent,eol,start
 
 " General writing
 "" Enable mouse support
-set mouse=a
+" set mouse=a
 "" Toggle paste mode
 map  <F7> :set paste!<CR>i
 map! <F7> <C-o>:set paste!<CR>i
