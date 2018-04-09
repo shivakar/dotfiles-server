@@ -19,6 +19,12 @@ if [[ "$REDHAT_RELEASE" != "CentOS"* ]] && [[ "$REDHAT_RELEASE" != "Red Hat"* ]]
     echo "Unknown OS - Only CentOS/RHEL based systems are currently supported"
     exit 1
 fi
+read input
+if [ "${input}" != "yes" ]; then
+    echo "Invalid input - '$input'"
+    echo "Exiting..."
+    exit 2
+fi
 
 echo "Starting setup..."
 source scripts/functions.sh
